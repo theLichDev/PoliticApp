@@ -1,32 +1,37 @@
-import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { Component, OnInit } from '@angular/core';
+import { NavController, NavParams, LoadingController } from 'ionic-angular';
 import { AngularFireDatabase } from 'angularfire2/database';
+
+import { Deputy } from '../../shared/models/deputy';
 
 @Component({
   selector: 'deputies-list',
   templateUrl: 'deputiesList.html'
 })
-export class DeputiesListPage {
-  selectedItem: any;
-  deputies: Array<any>;
+export class DeputiesListPage implements OnInit {
+
+  deputies: Deputy[];
 
   constructor(
     public navCtrl: NavController, 
     public navParams: NavParams,
+    public loadingCtrl: LoadingController,
     public database: AngularFireDatabase
-  ) {
-    // If we navigated to this page, we will have an item available as a nav param
-    this.selectedItem = navParams.get('item');
-    database.list('/deputies').subscribe((data) => {
-      this.deputies = data;
+  ) {  }
+
+  ngOnInit() {
+    let loading = this.loadingCtrl.create({
+      content: 'Cargando datos...'
     });
+    loading.present();
+    this.database.list('/deputies')
+      .subscribe((data: Deputy[]) => {
+        this.deputies = data;
+        loading.dismiss();
+      });
   }
 
-  itemTapped(event, item) {
-    // That's right, we're pushing to ourselves!
-    // this.navCtrl.push(ListPage, {
-    //   item: item
-    // });
+  itemTapped() {
     console.log('Mariano Clicked')
   }
 }
