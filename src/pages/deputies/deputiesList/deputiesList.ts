@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { NavController, NavParams, LoadingController } from 'ionic-angular';
+import { NavController, NavParams, LoadingController, ModalController } from 'ionic-angular';
 import { AngularFireDatabase } from 'angularfire2/database';
 
-import { Deputy } from '../../shared/models/deputy';
+import { DeputiesSearchModal } from '../deputiesSearch/deputiesSearch'
+
+import { Deputy } from '../../../shared/models/deputy';
 
 @Component({
   selector: 'deputies-list',
@@ -16,7 +18,8 @@ export class DeputiesListPage implements OnInit {
     public navCtrl: NavController, 
     public navParams: NavParams,
     public loadingCtrl: LoadingController,
-    public database: AngularFireDatabase
+    public database: AngularFireDatabase,
+    public modalCtrl: ModalController
   ) {  }
 
   ngOnInit() {
@@ -32,6 +35,12 @@ export class DeputiesListPage implements OnInit {
   }
 
   itemTapped() {
-    console.log('Mariano Clicked')
+    console.log('Mariano Clicked');
   }
+
+  openAdvancedSearch() {
+    let searchModal = this.modalCtrl.create(DeputiesSearchModal);
+    searchModal.present();
+  }
+
 }

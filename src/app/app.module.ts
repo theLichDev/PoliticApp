@@ -5,7 +5,8 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 //App Components
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
-import { DeputiesListPage } from '../pages/deputiesList/deputiesList';
+import { DeputiesListPage } from '../pages/deputies/deputiesList/deputiesList';
+import { DeputiesSearchModal } from '../pages/deputies/deputiesSearch/deputiesSearch';
 
 //App device initialization
 import { StatusBar } from '@ionic-native/status-bar';
@@ -29,7 +30,8 @@ const firebaseConfig = {
   declarations: [
     MyApp,
     HomePage,
-    DeputiesListPage
+    DeputiesListPage,
+    DeputiesSearchModal
   ],
   imports: [
     BrowserModule,
@@ -40,7 +42,8 @@ const firebaseConfig = {
   entryComponents: [
     MyApp,
     HomePage,
-    DeputiesListPage
+    DeputiesListPage,
+    DeputiesSearchModal
   ],
   providers: [
     StatusBar,
