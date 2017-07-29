@@ -5,7 +5,7 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 //App Components
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
-import { DeputiesListPage } from '../pages/deputies/deputiesList';
+import { DeputiesListPage } from '../pages/deputiesList/deputiesList';
 
 //App device initialization
 import { StatusBar } from '@ionic-native/status-bar';
