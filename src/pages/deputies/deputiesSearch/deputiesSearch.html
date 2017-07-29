@@ -1,12 +1,32 @@
 <ion-header>
 
   <ion-navbar color="primary">
-    <ion-title>Buscar Diputados</ion-title>
+    <ion-title>Búsqueda Avanzada</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 <ion-content>
+
+  <ion-item class="input-padding">
+    <ion-input 
+      type="text"
+      [(ngModel)]="search.freeText"
+      placeholder="Buscar en Diputados">
+    </ion-input>
+  </ion-item>
+  <ion-item class="input-padding">
+    <ion-label>Grupo Parlamentario</ion-label>
+    <ion-select 
+      cancelText="Ninguno" 
+      interface="action-sheet"
+      [(ngModel)]="search.parliamentaryGroup"
+      (ionCancel)="handleSelectCancel('parliamentaryGroup')">
+      <ion-option value="enable">Enable</ion-option>
+      <ion-option value="mute">Mute</ion-option>
+      <ion-option value="mute_week">Mute for a week</ion-option>
+    </ion-select>
+  </ion-item>
 
 </ion-content>
 
@@ -26,7 +46,7 @@
         ion-button 
         clear 
         class="footer-button" 
-        color="primary" 
+        color="primary"
         (click)="initSearch()">
           Buscar
       </button>

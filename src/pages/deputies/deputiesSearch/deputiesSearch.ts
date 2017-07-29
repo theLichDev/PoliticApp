@@ -1,20 +1,17 @@
-import { Component, OnInit } from '@angular/core';
-import { NavParams, ViewController } from 'ionic-angular';
+import { Component } from '@angular/core';
+import { ViewController } from 'ionic-angular';
 
 @Component({
   selector: 'deputies-search',
   templateUrl: 'deputiesSearch.html'
 })
-export class DeputiesSearchModal implements OnInit {
+export class DeputiesSearchModal {
+
+  public search: Object = {};
 
   constructor(
-    public navParams: NavParams,
     public viewCtrl: ViewController
   ) {  }
-
-  ngOnInit() {
-    
-  }
 
   closeSearch() {
     this.viewCtrl.dismiss();
@@ -22,6 +19,10 @@ export class DeputiesSearchModal implements OnInit {
 
   initSearch() {
     this.viewCtrl.dismiss();
+  }
+
+  handleSelectCancel(nameInput: string) {
+    this.search[nameInput] = null;
   }
 
 }
