@@ -15,16 +15,36 @@
       placeholder="Buscar en Diputados">
     </ion-input>
   </ion-item>
+
   <ion-item class="input-padding">
     <ion-label>Grupo Parlamentario</ion-label>
     <ion-select 
-      cancelText="Ninguno" 
-      interface="action-sheet"
+      cancelText="Ninguno"
+      okText="Aceptar"
+      interface="popover"
       [(ngModel)]="search.parliamentaryGroup"
       (ionCancel)="handleSelectCancel('parliamentaryGroup')">
-      <ion-option value="enable">Enable</ion-option>
-      <ion-option value="mute">Mute</ion-option>
-      <ion-option value="mute_week">Mute for a week</ion-option>
+      <ion-option 
+        *ngFor="let group of parliamentaryGroups"
+        value="{{group}}">
+          {{ group }}
+      </ion-option>
+    </ion-select>
+  </ion-item>
+
+  <ion-item class="input-padding">
+    <ion-label>Circunscripción</ion-label>
+    <ion-select 
+      cancelText="Ninguno"
+      okText="Aceptar"
+      interface="popover"
+      [(ngModel)]="search.district"
+      (ionCancel)="handleSelectCancel('district')">
+      <ion-option 
+        *ngFor="let district of districts"
+        value="{{district}}">
+          {{ district }}
+      </ion-option>
     </ion-select>
   </ion-item>
 
