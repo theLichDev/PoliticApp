@@ -12,6 +12,7 @@ export class DeputiesSearchModal implements OnInit{
   public search: Object = {};
   public parliamentaryGroups: string[];
   public districts: string[];
+  public positions: string[];
 
   constructor(
     public viewCtrl: ViewController,
@@ -28,6 +29,12 @@ export class DeputiesSearchModal implements OnInit{
     this.database.list('/districts')
       .subscribe((data: any[]) => {
         this.districts = data.map((item) => {
+          return item.$value;
+        });
+      });
+    this.database.list('/positions')
+      .subscribe((data: any[]) => {
+        this.positions = data.map((item) => {
           return item.$value;
         });
       });

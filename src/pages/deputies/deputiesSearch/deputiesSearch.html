@@ -48,6 +48,22 @@
     </ion-select>
   </ion-item>
 
+  <ion-item class="input-padding">
+    <ion-label>Cargo</ion-label>
+    <ion-select 
+      cancelText="Ninguno"
+      okText="Aceptar"
+      interface="popover"
+      [(ngModel)]="search.position"
+      (ionCancel)="handleSelectCancel('position')">
+      <ion-option 
+        *ngFor="let position of positions"
+        value="{{position}}">
+          {{ position }}
+      </ion-option>
+    </ion-select>
+  </ion-item>
+
 </ion-content>
 
 <ion-footer>
