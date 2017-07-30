@@ -64,6 +64,33 @@
     </ion-select>
   </ion-item>
 
+  <ion-list 
+    inset
+    radio-group
+    [(ngModel)]="search.gender">
+      <ion-list-header>
+        Sexo
+      </ion-list-header>
+      <ion-item>
+        <ion-label>Hombre</ion-label>
+        <ion-radio value="male"></ion-radio>
+      </ion-item>
+      <ion-item>
+        <ion-label>Mujer</ion-label>
+        <ion-radio value="female"></ion-radio>
+      </ion-item>
+  </ion-list>
+
+  <ion-item class="input-padding">
+    <ion-label>Redes Sociales</ion-label>
+    <ion-checkbox [(ngModel)]="search.socialNetworks"></ion-checkbox>
+  </ion-item>
+
+  <ion-item class="input-padding">
+    <ion-label>Declaración de Bienes</ion-label>
+    <ion-checkbox [(ngModel)]="search.propertyDeclaration"></ion-checkbox>
+  </ion-item>
+
 </ion-content>
 
 <ion-footer>
