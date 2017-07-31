@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NavController, NavParams, LoadingController, ModalController } from 'ionic-angular';
+import { NavController, LoadingController, ModalController } from 'ionic-angular';
 import { AngularFireDatabase } from 'angularfire2/database';
 
 import { DeputiesSearchModal } from '../deputiesSearch/deputiesSearch'
@@ -16,7 +16,6 @@ export class DeputiesListPage implements OnInit {
 
   constructor(
     public navCtrl: NavController, 
-    public navParams: NavParams,
     public loadingCtrl: LoadingController,
     public database: AngularFireDatabase,
     public modalCtrl: ModalController
