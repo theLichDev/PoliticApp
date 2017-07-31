@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NavController, NavParams, LoadingController, ModalController } from 'ionic-angular';
+import { NavController, LoadingController, ModalController } from 'ionic-angular';
 import { AngularFireDatabase } from 'angularfire2/database';
 
 import { DeputiesSearchModal } from '../deputiesSearch/deputiesSearch'
@@ -16,21 +16,20 @@ export class DeputiesListPage implements OnInit {
 
   constructor(
     public navCtrl: NavController, 
-    public navParams: NavParams,
     public loadingCtrl: LoadingController,
     public database: AngularFireDatabase,
     public modalCtrl: ModalController
   ) {  }
 
   ngOnInit() {
-    let loading = this.loadingCtrl.create({
+    let loadingDeputies = this.loadingCtrl.create({
       content: 'Cargando datos...'
     });
-    loading.present();
+    loadingDeputies.present();
     this.database.list('/deputies')
       .subscribe((data: Deputy[]) => {
         this.deputies = data;
-        loading.dismiss();
+        loadingDeputies.dismiss();
       });
   }
 
@@ -40,6 +39,19 @@ export class DeputiesListPage implements OnInit {
 
   openAdvancedSearch() {
     let searchModal = this.modalCtrl.create(DeputiesSearchModal);
+    searchModal.onDidDismiss((data: any) => {
+      if (data) {
+        // Create filter loader
+        let filterDataLoading = this.loadingCtrl.create({
+          content: 'Filtrando Resultados...'
+        });
+        filterDataLoading.present();
+        // Filter logic
+        console.log(data);
+        // Dismiss filter loader
+        filterDataLoading.dismiss();
+      }
+    });
     searchModal.present();
   }
 
