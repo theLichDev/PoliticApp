@@ -40,16 +40,18 @@ export class DeputiesListPage implements OnInit {
 
   openAdvancedSearch() {
     let searchModal = this.modalCtrl.create(DeputiesSearchModal);
-    searchModal.onDidDismiss((data: Object) => {
-      // Create filter loader
-      let filterDataLoading = this.loadingCtrl.create({
-        content: 'Filtrando Resultados...'
-      });
-      filterDataLoading.present();
-      // Filter logic
-      console.log(data);
-      // Dismiss filter loader
-      filterDataLoading.dismiss();
+    searchModal.onDidDismiss((data: any) => {
+      if (data) {
+        // Create filter loader
+        let filterDataLoading = this.loadingCtrl.create({
+          content: 'Filtrando Resultados...'
+        });
+        filterDataLoading.present();
+        // Filter logic
+        console.log(data);
+        // Dismiss filter loader
+        filterDataLoading.dismiss();
+      }
     });
     searchModal.present();
   }

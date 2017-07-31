@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ViewController } from 'ionic-angular';
+import { ViewController, ToastController } from 'ionic-angular';
 
 import { AngularFireDatabase } from 'angularfire2/database';
 
@@ -16,6 +16,7 @@ export class DeputiesSearchModal implements OnInit{
 
   constructor(
     public viewCtrl: ViewController,
+    public toastCtrl: ToastController,
     public database: AngularFireDatabase
   ) {  }
 
@@ -47,14 +48,21 @@ export class DeputiesSearchModal implements OnInit{
   initSearch() {
     if (Object.keys(this.search).length > 0) {
       if (this.search.dateFrom) {
-        //TODO: Parse date to timestamp
+        this.search.dateFrom = new Date(this.search.dateFrom).getTime();
       }
       if (this.search.dateTo) {
-        //TODO: Parse date to timestamp
+        this.search.dateFrom = new Date(this.search.dateTo).getTime();
       }
       this.viewCtrl.dismiss(this.search);
     } else {
-
+      let warningToast = this.toastCtrl.create({
+        message: 'Debe completar al menos un campo',
+        duration: 2500,
+        position: 'bottom',
+        showCloseButton: true,
+        closeButtonText: 'Cerrar'
+      });
+      warningToast.present();
     }
   }
 
