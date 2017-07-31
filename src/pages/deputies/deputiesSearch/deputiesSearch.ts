@@ -45,7 +45,11 @@ export class DeputiesSearchModal implements OnInit{
   }
 
   initSearch() {
-    this.viewCtrl.dismiss();
+    if (Object.keys(this.search).length > 0) {
+      this.viewCtrl.dismiss(this.search);
+    } else {
+      
+    }
   }
 
   handleSelectCancel(nameInput: string) {

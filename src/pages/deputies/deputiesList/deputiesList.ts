@@ -23,14 +23,14 @@ export class DeputiesListPage implements OnInit {
   ) {  }
 
   ngOnInit() {
-    let loading = this.loadingCtrl.create({
+    let loadingDeputies = this.loadingCtrl.create({
       content: 'Cargando datos...'
     });
-    loading.present();
+    loadingDeputies.present();
     this.database.list('/deputies')
       .subscribe((data: Deputy[]) => {
         this.deputies = data;
-        loading.dismiss();
+        loadingDeputies.dismiss();
       });
   }
 
@@ -40,6 +40,17 @@ export class DeputiesListPage implements OnInit {
 
   openAdvancedSearch() {
     let searchModal = this.modalCtrl.create(DeputiesSearchModal);
+    searchModal.onDidDismiss((data: Object) => {
+      // Create filter loader
+      let filterDataLoading = this.loadingCtrl.create({
+        content: 'Filtrando Resultados...'
+      });
+      filterDataLoading.present();
+      // Filter logic
+      console.log(data);
+      // Dismiss filter loader
+      filterDataLoading.dismiss();
+    });
     searchModal.present();
   }
 
