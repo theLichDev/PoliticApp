@@ -9,7 +9,7 @@ import { AngularFireDatabase } from 'angularfire2/database';
 })
 export class DeputiesSearchModal implements OnInit{
 
-  public search: Object = {};
+  public search: any = {};
   public parliamentaryGroups: string[];
   public districts: string[];
   public positions: string[];
@@ -46,9 +46,15 @@ export class DeputiesSearchModal implements OnInit{
 
   initSearch() {
     if (Object.keys(this.search).length > 0) {
+      if (this.search.dateFrom) {
+        //TODO: Parse date to timestamp
+      }
+      if (this.search.dateTo) {
+        //TODO: Parse date to timestamp
+      }
       this.viewCtrl.dismiss(this.search);
     } else {
-      
+
     }
   }
 
