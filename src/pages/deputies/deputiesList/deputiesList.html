@@ -1,5 +1,4 @@
 <ion-header>
-
   <ion-navbar color="primary">
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
@@ -11,11 +10,9 @@
       </button>
     </ion-buttons>
   </ion-navbar>
-
 </ion-header>
 
 <ion-content>
-
   <ion-list inset>
     <button 
       ion-item 
@@ -29,34 +26,18 @@
         <p>Grupo Parlamentario {{ deputy.parliamentaryGroup }}</p>
     </button>
   </ion-list>
-
 </ion-content>
 
 <ion-footer>
-
   <ion-toolbar>
-    <span *ngIf="filtersArray.length === 0">No hay filtros</span>
-    <ion-buttons *ngIf="filtersArray.length > 0">
-      <button 
-        ion-button 
-        clear
-        class="filter-button"
-        color="primary"
-        [hidden]="showFilters"
-        (click)="showFilters = true">
-          Mostrar Filtros
-      </button>
-      <button 
-        ion-button 
-        clear 
-        class="filter-button" 
-        color="primary"
-        [hidden]="!showFilters"
-        (click)="showFilters = false">
-          Ocultar Filtros
-      </button>
-    </ion-buttons>
-    <div [hidden]="!showFilters">
+    <h6 *ngIf="filtersArray.length === 0" class="no-filters">No hay filtros</h6>
+    <ion-item 
+      *ngIf="filtersArray.length > 0"
+      class="toggle-filters">
+        <ion-label class="toggle-color">Mostrar Filtros</ion-label>
+        <ion-toggle [(ngModel)]="showFilters"></ion-toggle>
+    </ion-item>
+    <div [hidden]="!showFilters" class="chips-container">
       <ion-chip class="custom-chip" *ngFor="let filter of filtersArray">
         <ion-label>{{ filter.name }}: {{ filter.value }}</ion-label>
         <button ion-button clear color="danger" (click)="deleteFilter(filter.name)">
@@ -65,5 +46,4 @@
       </ion-chip>
     </div>
   </ion-toolbar>
-
 </ion-footer>
