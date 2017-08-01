@@ -12,7 +12,7 @@ export class DeputiesSearchModal implements OnInit{
   public search: any = {};
   public parliamentaryGroups: string[];
   public districts: string[];
-  public positions: string[];
+  public positions: Object[];
 
   constructor(
     public viewCtrl: ViewController,
@@ -36,7 +36,7 @@ export class DeputiesSearchModal implements OnInit{
     this.database.list('/positions')
       .subscribe((data: any[]) => {
         this.positions = data.map((item) => {
-          return item.$value;
+          return item;
         });
       });
   }
@@ -51,7 +51,7 @@ export class DeputiesSearchModal implements OnInit{
         this.search.dateFrom = new Date(this.search.dateFrom).getTime();
       }
       if (this.search.dateTo) {
-        this.search.dateFrom = new Date(this.search.dateTo).getTime();
+        this.search.dateTo = new Date(this.search.dateTo).getTime();
       }
       this.viewCtrl.dismiss(this.search);
     } else {

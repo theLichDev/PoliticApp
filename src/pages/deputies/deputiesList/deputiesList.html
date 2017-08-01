@@ -38,12 +38,27 @@
         <ion-toggle [(ngModel)]="showFilters"></ion-toggle>
     </ion-item>
     <div [hidden]="!showFilters" class="chips-container">
-      <ion-chip class="custom-chip" *ngFor="let filter of filtersArray">
-        <ion-label>{{ filter.name }}: {{ filter.value }}</ion-label>
-        <button ion-button clear color="danger" (click)="deleteFilter(filter.name)">
-          <ion-icon name="close-circle"></ion-icon>
-        </button>
+      <ion-chip 
+        class="custom-chip"
+        *ngFor="let filter of filtersArray">
+          <ion-label>{{ dictionary[filter.name] }}: {{ filter.value }}</ion-label>
+          <button 
+            ion-button 
+            clear 
+            color="danger" 
+            (click)="deleteFilter(filter.name)">
+              <ion-icon name="close-circle"></ion-icon>
+          </button>
       </ion-chip>
     </div>
+    <button 
+      ion-button 
+      clear
+      style="align-self: right"
+      [hidden]="!showFilters"
+      *ngIf="filtersArray.length > 0"
+      (click)="deleteAllFilters()">
+        Borrar todos
+    </button>
   </ion-toolbar>
 </ion-footer>

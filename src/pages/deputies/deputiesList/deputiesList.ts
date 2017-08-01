@@ -12,6 +12,18 @@ import { Deputy } from '../../../shared/models/deputy';
 })
 export class DeputiesListPage implements OnInit {
 
+  public dictionary: Object = {
+    freeText: 'Contiene',
+    dateFrom: 'Desde',
+    dateTo: 'Hasta',
+    district: 'Circunscripción',
+    gender: 'Sexo',
+    parliamentaryGroup: 'Grupo',
+    position: 'Cargo',
+    propertyDeclaration: 'Declaración',
+    socialNetworks: 'Redes Sociales'
+  };
+
   public deputies: Deputy[];
   public filteredDeputies: Deputy[];
   public filtersArray: Array<{ name: string, value: any }> = [];
@@ -38,6 +50,10 @@ export class DeputiesListPage implements OnInit {
   }
 
   deleteFilter(filterName: string) {
+
+  }
+
+  deleteAllFilters() {
 
   }
 
@@ -77,6 +93,19 @@ export class DeputiesListPage implements OnInit {
           case 'freeText':
             let text = deputy.name.toLowerCase() + ' ' + deputy.lastName.toLowerCase()+ ' ' + deputy.description.toLowerCase();
             passFilter = passFilter && text.includes(filter.value.toLowerCase());
+            break;
+          case 'parliamentaryGroup':
+            passFilter = passFilter && deputy.parliamentaryGroup === filter.value;
+            break;
+          case 'district':
+            passFilter = passFilter && deputy.district === filter.value;
+            break;
+          case 'position':
+            let positions = deputy.positions.filter((position: string) => {
+              return position.toLowerCase().includes(filter.value.toLowerCase());
+            });
+            passFilter = passFilter && positions.length > 0;
+            break;
         }
       });
       return passFilter;

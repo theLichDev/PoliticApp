@@ -58,8 +58,8 @@
       (ionCancel)="handleSelectCancel('position')">
       <ion-option 
         *ngFor="let position of positions"
-        value="{{position}}">
-          {{ position }}
+        value="{{position.value}}">
+          {{ position.key }}
       </ion-option>
     </ion-select>
   </ion-item>
