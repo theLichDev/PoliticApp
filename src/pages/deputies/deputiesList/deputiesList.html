@@ -17,11 +17,10 @@
 <ion-content>
 
   <ion-list inset>
-
     <button 
       ion-item 
-      (click)="itemTapped()"
-      *ngFor="let deputy of deputies">
+      (click)="deputyTapped()"
+      *ngFor="let deputy of filteredDeputies">
         <ion-avatar item-start>
           <img src="assets/img/deputies/{{deputy.id}}.jpg">
         </ion-avatar>
@@ -29,7 +28,42 @@
         <h3>Diputado por {{ deputy.district }}</h3>
         <p>Grupo Parlamentario {{ deputy.parliamentaryGroup }}</p>
     </button>
-
   </ion-list>
 
 </ion-content>
+
+<ion-footer>
+
+  <ion-toolbar>
+    <span *ngIf="filtersArray.length === 0">No hay filtros</span>
+    <ion-buttons *ngIf="filtersArray.length > 0">
+      <button 
+        ion-button 
+        clear
+        class="filter-button"
+        color="primary"
+        [hidden]="showFilters"
+        (click)="showFilters = true">
+          Mostrar Filtros
+      </button>
+      <button 
+        ion-button 
+        clear 
+        class="filter-button" 
+        color="primary"
+        [hidden]="!showFilters"
+        (click)="showFilters = false">
+          Ocultar Filtros
+      </button>
+    </ion-buttons>
+    <div [hidden]="!showFilters">
+      <ion-chip class="custom-chip" *ngFor="let filter of filtersArray">
+        <ion-label>{{ filter.name }}: {{ filter.value }}</ion-label>
+        <button ion-button clear color="danger" (click)="deleteFilter(filter.name)">
+          <ion-icon name="close-circle"></ion-icon>
+        </button>
+      </ion-chip>
+    </div>
+  </ion-toolbar>
+
+</ion-footer>
