@@ -112,6 +112,41 @@ export class DeputiesListPage implements OnInit {
               return position.toLowerCase().includes(filter.value.toLowerCase());
             });
             passFilter = passFilter && positions.length > 0;
+            break;  
+          case 'gender':
+            passFilter = passFilter && deputy.gender === filter.value;
+            break;
+          case 'socialNetworks':
+            if (deputy.socialNetworks) {
+              passFilter = passFilter && (filter.value === 'true');
+            } else {
+              passFilter = passFilter && (filter.value === 'false');
+            }
+            break;
+          case 'propertyDeclaration':
+            if (deputy.propertyDeclaration) {
+              passFilter = passFilter && (filter.value === 'true');
+            } else {
+              passFilter = passFilter && (filter.value === 'false');
+            }
+            break;
+          case 'dateFrom':
+            let deputyDateFrom = new Date(deputy.registerDate);
+            let filterDateFrom = new Date(filter.value - 7200000);
+            if (deputyDateFrom >= filterDateFrom) {
+              passFilter = passFilter && true;
+            } else {
+              passFilter = passFilter && false;
+            }
+            break;
+          case 'dateTo':
+            let deputyDateTo = new Date(deputy.registerDate);
+            let filterDateTo = new Date(filter.value - 7200000);
+            if (deputyDateTo <= filterDateTo) {
+              passFilter = passFilter && true;
+            } else {
+              passFilter = passFilter && false;
+            }
             break;
         }
       });

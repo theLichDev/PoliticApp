@@ -49,10 +49,10 @@
             {{ dictionary[filter.name] }}: {{ dictionary[filter.value] }}
           </ion-label>
           <ion-label *ngSwitchCase="'propertyDeclaration'">
-            {{ dictionary[filter.name] }}: {{ filter.value ? 'Tiene' : 'No tiene' }}
+            {{ dictionary[filter.name] }}: {{ filter.value === 'true' ? 'Sí' : 'No' }}
           </ion-label>
           <ion-label *ngSwitchCase="'socialNetworks'">
-            {{ dictionary[filter.name] }}: {{ filter.value ? 'Tiene' : 'No tiene' }}
+            {{ dictionary[filter.name] }}: {{ filter.value === 'true' ? 'Sí' : 'No' }}
           </ion-label>
           <ion-label *ngSwitchCase="'dateFrom'">
             {{ dictionary[filter.name] }}: {{ filter.value | date: 'dd/MM/yy' }}
