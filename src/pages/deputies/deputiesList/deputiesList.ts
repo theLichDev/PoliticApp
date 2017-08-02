@@ -45,7 +45,7 @@ export class DeputiesListPage implements OnInit {
 
   ngOnInit() {
     let loadingDeputies = this.loadingCtrl.create({
-      content: 'Cargando datos...'
+      content: 'Cargando Diputados...'
     });
     loadingDeputies.present();
     this.database.list('/deputies')
@@ -57,16 +57,32 @@ export class DeputiesListPage implements OnInit {
   }
 
   deleteFilter(filterName: string) {
-
+    let filterDataLoading = this.loadingCtrl.create({
+      content: 'Filtrando Diputados...'
+    });
+    filterDataLoading.present();
+    this.filtersArray = this.filtersArray.filter((filter) => {
+      return filter.name != filterName;
+    });
+    this.filterDeputies(this.filtersArray);
+    filterDataLoading.dismiss();
   }
 
   deleteAllFilters() {
-
+    let filterDataLoading = this.loadingCtrl.create({
+      content: 'Cargando Diputados...'
+    });
+    filterDataLoading.present();
+    this.filtersArray = [];
+    this.filteredDeputies = this.deputies.filter(() => {
+      return true;
+    });
+    filterDataLoading.dismiss();
   }
 
-  deputyTapped() {
+  deputyTapped(deputy: Deputy) {
     //TODO implement details view
-    console.log('Mariano Clicked');
+    console.log(deputy);
   }
 
   openAdvancedSearch() {
@@ -79,7 +95,7 @@ export class DeputiesListPage implements OnInit {
         });
         // Create filter loader
         let filterDataLoading = this.loadingCtrl.create({
-          content: 'Filtrando Resultados...'
+          content: 'Filtrando Diputados...'
         });
         filterDataLoading.present();
         // Filter logic

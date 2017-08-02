@@ -16,7 +16,7 @@
   <ion-list inset>
     <button 
       ion-item 
-      (click)="deputyTapped()"
+      (click)="deputyTapped(deputy)"
       *ngFor="let deputy of filteredDeputies">
         <ion-avatar item-start>
           <img src="assets/img/deputies/{{deputy.id}}.jpg">
