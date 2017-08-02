@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { NavController, LoadingController, ModalController } from 'ionic-angular';
 import { AngularFireDatabase } from 'angularfire2/database';
 
-import { DeputiesSearchModal } from '../deputiesSearch/deputiesSearch'
+import { DeputiesSearchModal } from '../deputiesSearch/deputiesSearch';
+import { DeputiesDetailsPage } from '../deputiesDetails/deputiesDetails';
 
 import { Deputy } from '../../../shared/models/deputy';
 
@@ -81,8 +82,7 @@ export class DeputiesListPage implements OnInit {
   }
 
   deputyTapped(deputy: Deputy) {
-    //TODO implement details view
-    console.log(deputy);
+    this.navCtrl.push(DeputiesDetailsPage, deputy);
   }
 
   openAdvancedSearch() {

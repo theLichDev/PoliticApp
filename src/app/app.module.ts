@@ -7,6 +7,7 @@ import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { DeputiesListPage } from '../pages/deputies/deputiesList/deputiesList';
 import { DeputiesSearchModal } from '../pages/deputies/deputiesSearch/deputiesSearch';
+import { DeputiesDetailsPage } from '../pages/deputies/deputiesDetails/deputiesDetails';
 
 //App device initialization
 import { StatusBar } from '@ionic-native/status-bar';
@@ -31,7 +32,8 @@ const firebaseConfig = {
     MyApp,
     HomePage,
     DeputiesListPage,
-    DeputiesSearchModal
+    DeputiesSearchModal,
+    DeputiesDetailsPage
   ],
   imports: [
     BrowserModule,
@@ -43,7 +45,8 @@ const firebaseConfig = {
     MyApp,
     HomePage,
     DeputiesListPage,
-    DeputiesSearchModal
+    DeputiesSearchModal,
+    DeputiesDetailsPage
   ],
   providers: [
     StatusBar,
