@@ -21,7 +21,14 @@ export class DeputiesListPage implements OnInit {
     parliamentaryGroup: 'Grupo',
     position: 'Cargo',
     propertyDeclaration: 'Declaración',
-    socialNetworks: 'Redes Sociales'
+    socialNetworks: 'Redes Sociales',
+    male: 'Hombre',
+    female: 'Mujer',
+    Portavoz: 'Portavoz',
+    Vocal: 'Vocal',
+    Vicepresident: 'Vicepresidente',
+    President: 'Presidente',
+    Adscrit: 'Adscrit'
   };
 
   public deputies: Deputy[];

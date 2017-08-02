@@ -40,8 +40,29 @@
     <div [hidden]="!showFilters" class="chips-container">
       <ion-chip 
         class="custom-chip"
-        *ngFor="let filter of filtersArray">
-          <ion-label>{{ dictionary[filter.name] }}: {{ filter.value }}</ion-label>
+        *ngFor="let filter of filtersArray"
+        [ngSwitch]="filter.name">
+          <ion-label *ngSwitchCase="'position'">
+            {{ dictionary[filter.name] }}: {{ dictionary[filter.value] }}
+          </ion-label>
+          <ion-label *ngSwitchCase="'gender'">
+            {{ dictionary[filter.name] }}: {{ dictionary[filter.value] }}
+          </ion-label>
+          <ion-label *ngSwitchCase="'propertyDeclaration'">
+            {{ dictionary[filter.name] }}: {{ filter.value ? 'Tiene' : 'No tiene' }}
+          </ion-label>
+          <ion-label *ngSwitchCase="'socialNetworks'">
+            {{ dictionary[filter.name] }}: {{ filter.value ? 'Tiene' : 'No tiene' }}
+          </ion-label>
+          <ion-label *ngSwitchCase="'dateFrom'">
+            {{ dictionary[filter.name] }}: {{ filter.value | date: 'dd/MM/yy' }}
+          </ion-label>
+          <ion-label *ngSwitchCase="'dateTo'">
+            {{ dictionary[filter.name] }}: {{ filter.value | date: 'dd/MM/yy' }}
+          </ion-label>
+          <ion-label *ngSwitchDefault>
+            {{ dictionary[filter.name] }}: {{ filter.value }}
+          </ion-label>
           <button 
             ion-button 
             clear 
