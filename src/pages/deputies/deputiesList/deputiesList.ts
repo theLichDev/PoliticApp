@@ -12,7 +12,29 @@ import { Deputy } from '../../../shared/models/deputy';
 })
 export class DeputiesListPage implements OnInit {
 
-  deputies: Deputy[];
+  public dictionary: Object = {
+    freeText: 'Contiene',
+    dateFrom: 'Desde',
+    dateTo: 'Hasta',
+    district: 'Circunscripción',
+    gender: 'Sexo',
+    parliamentaryGroup: 'Grupo',
+    position: 'Cargo',
+    propertyDeclaration: 'Declaración',
+    socialNetworks: 'Redes Sociales',
+    male: 'Hombre',
+    female: 'Mujer',
+    Portavoz: 'Portavoz',
+    Vocal: 'Vocal',
+    Vicepresident: 'Vicepresidente',
+    President: 'Presidente',
+    Adscrit: 'Adscrit'
+  };
+
+  public deputies: Deputy[];
+  public filteredDeputies: Deputy[];
+  public filtersArray: Array<{ name: string, value: any }> = [];
+  public showFilters: boolean = false;
 
   constructor(
     public navCtrl: NavController, 
@@ -29,30 +51,107 @@ export class DeputiesListPage implements OnInit {
     this.database.list('/deputies')
       .subscribe((data: Deputy[]) => {
         this.deputies = data;
+        this.filteredDeputies = data;
         loadingDeputies.dismiss();
       });
   }
 
-  itemTapped() {
+  deleteFilter(filterName: string) {
+
+  }
+
+  deleteAllFilters() {
+
+  }
+
+  deputyTapped() {
+    //TODO implement details view
     console.log('Mariano Clicked');
   }
 
   openAdvancedSearch() {
     let searchModal = this.modalCtrl.create(DeputiesSearchModal);
-    searchModal.onDidDismiss((data: any) => {
-      if (data) {
+    searchModal.onDidDismiss((filters: any) => {
+      if (filters) {
+        // Convert the modal filters result to iterable array
+        this.filtersArray = Object.keys(filters).map((filterName) => {
+          return { name: filterName, value: filters[filterName] };
+        });
         // Create filter loader
         let filterDataLoading = this.loadingCtrl.create({
           content: 'Filtrando Resultados...'
         });
         filterDataLoading.present();
         // Filter logic
-        console.log(data);
+        this.filterDeputies(this.filtersArray);
         // Dismiss filter loader
         filterDataLoading.dismiss();
       }
     });
     searchModal.present();
+  }
+
+  private filterDeputies(filters: Array<{ name: string, value: any }>) {
+    let passFilter;
+    this.filteredDeputies = this.deputies.filter((deputy: Deputy) => {
+      passFilter = true;
+      filters.forEach((filter) => {
+        switch(filter.name) {
+          case 'freeText':
+            let text = deputy.name.toLowerCase() + ' ' + deputy.lastName.toLowerCase()+ ' ' + deputy.description.toLowerCase();
+            passFilter = passFilter && text.includes(filter.value.toLowerCase());
+            break;
+          case 'parliamentaryGroup':
+            passFilter = passFilter && deputy.parliamentaryGroup === filter.value;
+            break;
+          case 'district':
+            passFilter = passFilter && deputy.district === filter.value;
+            break;
+          case 'position':
+            let positions = deputy.positions.filter((position: string) => {
+              return position.toLowerCase().includes(filter.value.toLowerCase());
+            });
+            passFilter = passFilter && positions.length > 0;
+            break;  
+          case 'gender':
+            passFilter = passFilter && deputy.gender === filter.value;
+            break;
+          case 'socialNetworks':
+            if (deputy.socialNetworks) {
+              passFilter = passFilter && (filter.value === 'true');
+            } else {
+              passFilter = passFilter && (filter.value === 'false');
+            }
+            break;
+          case 'propertyDeclaration':
+            if (deputy.propertyDeclaration) {
+              passFilter = passFilter && (filter.value === 'true');
+            } else {
+              passFilter = passFilter && (filter.value === 'false');
+            }
+            break;
+          case 'dateFrom':
+            let deputyDateFrom = new Date(deputy.registerDate);
+            let filterDateFrom = new Date(filter.value - 7200000);
+            if (deputyDateFrom >= filterDateFrom) {
+              passFilter = passFilter && true;
+            } else {
+              passFilter = passFilter && false;
+            }
+            break;
+          case 'dateTo':
+            let deputyDateTo = new Date(deputy.registerDate);
+            let filterDateTo = new Date(filter.value - 7200000);
+            if (deputyDateTo <= filterDateTo) {
+              passFilter = passFilter && true;
+            } else {
+              passFilter = passFilter && false;
+            }
+            break;
+        }
+      });
+      return passFilter;
+    });
   }
 
 }

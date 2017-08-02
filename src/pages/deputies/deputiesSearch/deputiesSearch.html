@@ -58,8 +58,8 @@
       (ionCancel)="handleSelectCancel('position')">
       <ion-option 
         *ngFor="let position of positions"
-        value="{{position}}">
-          {{ position }}
+        value="{{position.value}}">
+          {{ position.key }}
       </ion-option>
     </ion-select>
   </ion-item>
@@ -67,6 +67,7 @@
   <ion-list 
     inset
     radio-group
+    class="custom-list"
     [(ngModel)]="search.gender">
       <ion-list-header>
         Sexo
@@ -81,15 +82,41 @@
       </ion-item>
   </ion-list>
 
-  <ion-item class="input-padding">
-    <ion-label>Redes Sociales</ion-label>
-    <ion-checkbox [(ngModel)]="search.socialNetworks"></ion-checkbox>
-  </ion-item>
+  <ion-list 
+    inset
+    radio-group
+    class="custom-list"
+    [(ngModel)]="search.socialNetworks">
+      <ion-list-header>
+        Redes Sociales
+      </ion-list-header>
+      <ion-item>
+        <ion-label>Sí</ion-label>
+        <ion-radio value="true"></ion-radio>
+      </ion-item>
+      <ion-item>
+        <ion-label>No</ion-label>
+        <ion-radio value="false"></ion-radio>
+      </ion-item>
+  </ion-list>
 
-  <ion-item class="input-padding">
-    <ion-label>Declaración de Bienes</ion-label>
-    <ion-checkbox [(ngModel)]="search.propertyDeclaration"></ion-checkbox>
-  </ion-item>
+  <ion-list 
+    inset
+    radio-group
+    class="custom-list"
+    [(ngModel)]="search.propertyDeclaration">
+      <ion-list-header>
+        Declaración de Bienes
+      </ion-list-header>
+      <ion-item>
+        <ion-label>Sí</ion-label>
+        <ion-radio value="true"></ion-radio>
+      </ion-item>
+      <ion-item>
+        <ion-label>No</ion-label>
+        <ion-radio value="false"></ion-radio>
+      </ion-item>
+  </ion-list>
 
   <ion-list 
     inset>
