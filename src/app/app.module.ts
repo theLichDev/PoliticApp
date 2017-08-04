@@ -9,7 +9,8 @@ import { DeputiesListPage } from '../pages/deputies/deputiesList/deputiesList';
 import { DeputiesSearchModal } from '../pages/deputies/deputiesSearch/deputiesSearch';
 import { DeputiesDetailsPage } from '../pages/deputies/deputiesDetails/deputiesDetails';
 
-//App device initialization
+//Ionic Native
+import { InAppBrowser } from '@ionic-native/in-app-browser';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
@@ -52,6 +53,7 @@ const firebaseConfig = {
     StatusBar,
     SplashScreen,
     AngularFireDatabase,
+    InAppBrowser,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

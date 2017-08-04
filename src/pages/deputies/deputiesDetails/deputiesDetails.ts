@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
+import { InAppBrowser } from '@ionic-native/in-app-browser';
 
 import { Deputy } from '../../../shared/models/deputy';
 
@@ -14,7 +15,8 @@ export class DeputiesDetailsPage implements OnInit{
 
   constructor(
     public navCtrl: NavController,
-    private navParams: NavParams
+    private navParams: NavParams,
+    private inAppBrowser: InAppBrowser
   ) {  }
 
   ngOnInit() {
@@ -27,7 +29,7 @@ export class DeputiesDetailsPage implements OnInit{
   }
 
   openInAppWeb(url: string) {
-    console.log(url);
+    this.inAppBrowser.create(url);
   }
 
 }
