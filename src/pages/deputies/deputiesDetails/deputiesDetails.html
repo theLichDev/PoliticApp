@@ -70,12 +70,15 @@
     </ion-row>
     <ion-row>
       <ion-col col-12>
-        <!-- Positions List -->
         <ion-list class="details-list">
           <ion-list-header class="list-no-padding">
             <strong>Cargos</strong>
           </ion-list-header>
-          <ion-item class="details-list__item">Terminator II</ion-item>
+          <ion-item
+            *ngFor="let position of deputy.positions"
+            class="details-list__item">
+              <p>{{ position }}</p>
+          </ion-item>
         </ion-list>
       </ion-col>
     </ion-row>
