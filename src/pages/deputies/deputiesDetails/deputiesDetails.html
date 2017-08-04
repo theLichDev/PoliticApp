@@ -40,29 +40,17 @@
         </a>
       </ion-col>
     </ion-row>
-    <ion-row class="social-row">
-      <!-- SN functionality  -->
+    <ion-row class="social-row" *ngIf="socialNetworks">
       <ion-col col-12>
         <ion-row><strong>Redes Sociales</strong></ion-row>
         <ion-row>
-          <ion-col col-3>
-            <button ion-button clear icon-only>
-              <ion-icon name="logo-facebook"></ion-icon>
-            </button>
-          </ion-col>
-          <ion-col col-3>
-            <button ion-button clear icon-only>
-              <ion-icon name="logo-twitter"></ion-icon>
-            </button>
-          </ion-col>
-          <ion-col col-3>
-            <button ion-button clear icon-only>
-              <ion-icon name="logo-youtube"></ion-icon>
-            </button>
-          </ion-col>
-          <ion-col col-3>
-            <button ion-button clear icon-only>
-              <ion-icon name="logo-wordpress"></ion-icon>
+          <ion-col col-3 *ngFor="let socialNetwork of socialNetworks">
+            <button 
+              ion-button
+              clear
+              icon-only
+              (click)="openInAppWeb(socialNetwork.url)">
+                <ion-icon name="logo-{{ socialNetwork.name }}"></ion-icon>
             </button>
           </ion-col>
         </ion-row>
