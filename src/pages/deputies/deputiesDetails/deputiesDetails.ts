@@ -20,8 +20,4 @@ export class DeputiesDetailsPage implements OnInit{
    this.deputy = this.navParams.data;
   }
 
-  goBack() {
-    this.navCtrl.pop();
-  }
-
 }
