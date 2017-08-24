@@ -28,8 +28,8 @@ export class DeputiesDetailsPage implements OnInit{
     }
   }
 
-  openInAppWeb(url: string) {
-    this.inAppBrowser.create(url);
+  openInAppWeb(url: string, target: string) {
+    this.inAppBrowser.create(url, target);
   }
 
 }
