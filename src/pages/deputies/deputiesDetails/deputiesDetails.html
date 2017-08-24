@@ -1,0 +1,74 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>{{ deputy.name }} {{ deputy.lastName }}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid class="deputy-grid">
+    <ion-row>
+      <ion-col col-5>
+        <img 
+          src="assets/img/deputies/{{deputy.id}}.jpg"
+          class="deputy-details-img"
+          height="125"
+          width="125">
+      </ion-col>
+      <ion-col col-7>
+        <ion-row class="next-to-img">
+          <strong>Diputado por:</strong> {{ ' ' + deputy.district }}
+        </ion-row>
+        <ion-row class="next-to-img">
+          <strong>Grupo Parlamentario:</strong> {{ ' ' + deputy.parliamentaryGroup }}
+        </ion-row>
+        <ion-row class="next-to-img">
+          <strong>Fecha de Alta:</strong> {{ ' ' + deputy.registerDate | date: 'dd/MM/yy' }}
+        </ion-row>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col col-12>
+        <p class="details-description">
+          {{ deputy.description }}
+        </p>
+      </ion-col>
+    </ion-row>
+    <ion-row *ngIf="deputy.propertyDeclaration">
+      <ion-col col-12>
+        <a (click)="openInAppWeb(deputy.propertyDeclaration, '_system')">
+          Declaración de Bienes
+        </a>
+      </ion-col>
+    </ion-row>
+    <ion-row class="social-row" *ngIf="socialNetworks">
+      <ion-col col-12>
+        <ion-row><strong>Redes Sociales</strong></ion-row>
+        <ion-row>
+          <ion-col col-3 *ngFor="let socialNetwork of socialNetworks">
+            <button 
+              ion-button
+              clear
+              icon-only
+              (click)="openInAppWeb(socialNetwork.url, '_self')">
+                <ion-icon name="logo-{{ socialNetwork.name }}"></ion-icon>
+            </button>
+          </ion-col>
+        </ion-row>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col col-12>
+        <ion-list class="details-list">
+          <ion-list-header class="list-no-padding">
+            <strong>Cargos</strong>
+          </ion-list-header>
+          <ion-item
+            *ngFor="let position of deputy.positions"
+            class="details-list__item">
+              <p>{{ position }}</p>
+          </ion-item>
+        </ion-list>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

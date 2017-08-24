@@ -1,0 +1,41 @@
+.deputy-grid {
+  padding: 25px;
+  strong {
+    color: #757575;
+    margin-right: 7px;
+  }
+}
+
+.details-description {
+  text-align: justify;
+}
+
+.deputy-details-img {
+  border-radius: 5px;
+}
+
+.next-to-img {
+  padding: 11px 0;
+}
+
+.social-row {
+  margin-top: 15px;
+}
+
+.list-no-padding {
+  padding-left: 0px !important;
+}
+
+.details-list {
+  margin: 10px 0;
+
+  .details-list__item {
+    font-size: 1.4rem;
+
+    ion-label {
+      white-space: normal !important;
+    }
+    
+  }
+
+}
