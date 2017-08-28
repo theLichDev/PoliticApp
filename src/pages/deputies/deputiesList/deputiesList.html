@@ -26,6 +26,11 @@
         <p>Grupo Parlamentario {{ deputy.parliamentaryGroup }}</p>
     </button>
   </ion-list>
+  <ion-label
+    class="no-data-list-label"
+    *ngIf="filteredDeputies?.length === 0">
+      No hay datos disponibles
+  </ion-label>
 </ion-content>
 
 <ion-footer>
