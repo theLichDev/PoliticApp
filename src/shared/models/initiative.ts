@@ -13,7 +13,8 @@ export interface Initiative {
 interface Voting {
   agree: number,
   disagree: number,
-  abstentions: number
+  abstentions: number,
+  noVote: number
 }
 
 interface Opinion {

@@ -9,6 +9,7 @@ import { DeputiesListPage } from '../pages/deputies/deputiesList/deputiesList';
 import { DeputiesSearchModal } from '../pages/deputies/deputiesSearch/deputiesSearch';
 import { DeputiesDetailsPage } from '../pages/deputies/deputiesDetails/deputiesDetails';
 import { InitiativesListPage } from '../pages/initiatives/initiativesList/initiativesList';
+import { InitiativesSearchModal } from '../pages/initiatives/initiativesSearch/initiativesSearch';
 
 //Ionic Native
 import { InAppBrowser } from '@ionic-native/in-app-browser';
@@ -36,7 +37,8 @@ const firebaseConfig = {
     DeputiesListPage,
     DeputiesSearchModal,
     DeputiesDetailsPage,
-    InitiativesListPage
+    InitiativesListPage,
+    InitiativesSearchModal
   ],
   imports: [
     BrowserModule,
@@ -50,7 +52,8 @@ const firebaseConfig = {
     DeputiesListPage,
     DeputiesSearchModal,
     DeputiesDetailsPage,
-    InitiativesListPage
+    InitiativesListPage,
+    InitiativesSearchModal
   ],
   providers: [
     StatusBar,

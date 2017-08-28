@@ -29,7 +29,7 @@ export class DeputiesListPage implements OnInit {
     Vocal: 'Vocal',
     Vicepresident: 'Vicepresidente',
     President: 'Presidente',
-    Adscrit: 'Adscrit'
+    Adscrit: 'Adscrito'
   };
 
   public deputies: Deputy[];
