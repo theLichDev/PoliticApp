@@ -1,0 +1,51 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>Detalles</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid class="custom-grid">
+    <ion-row>
+      <ion-col col-5>
+        <img 
+          src="assets/img/parliamentaryGroup/{{initiative.parliamentaryGroup}}.jpg"
+          class="details-img"
+          height="125"
+          width="125">
+      </ion-col>
+      <ion-col col-7>
+        <ion-row class="next-to-img">
+          <strong>Tipo:</strong> {{ ' ' + initiative.type }}
+        </ion-row>
+        <ion-row class="next-to-img">
+          <strong>Presentado el:</strong> {{ ' ' + initiative.presentationDate | date: 'dd/MM/yy' }}
+        </ion-row>
+        <ion-row class="next-to-img">
+          <strong>Estado:</strong> {{ ' ' + initiative.state }}
+        </ion-row>
+      </ion-col>
+    </ion-row>
+    <ion-row
+      class="initiative-grid-row"
+      *ngIf="initiative.processingResult">
+      <strong>Resultado de Tramitación:</strong> {{ ' ' + initiative.processingResult }}
+    </ion-row>
+    <ion-row 
+      class="results-link"
+      *ngIf="initiative.votingResult">
+      <ion-col col-12>
+          <a (click)="openResult()">
+            Resultado de la Votación
+          </a>
+        </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col col-12>
+        <p class="details-description">
+          {{ initiative.description }}
+        </p>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
