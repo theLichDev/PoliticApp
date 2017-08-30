@@ -3,7 +3,7 @@ import { NavController, LoadingController, ModalController } from 'ionic-angular
 import { AngularFireDatabase } from 'angularfire2/database';
 
 import { InitiativesSearchModal } from '../initiativesSearch/initiativesSearch';
-// import { DeputiesDetailsPage } from '../deputiesDetails/deputiesDetails';
+import { InitiativesDetailsPage } from '../initiativesDetails/initiativesDetails';
 
 import { Initiative } from '../../../shared/models/initiative';
 
@@ -73,7 +73,7 @@ export class InitiativesListPage implements OnInit {
   }
 
   initiativeTapped(initiative: Initiative) {
-    console.log(initiative);
+    this.navCtrl.push(InitiativesDetailsPage, initiative);
   }
 
   openAdvancedSearch() {

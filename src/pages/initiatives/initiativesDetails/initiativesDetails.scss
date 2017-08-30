@@ -1,0 +1,43 @@
+.initiative-grid-row{
+  margin-left: 4px;
+  margin-bottom: 13px;
+}
+
+.no-vote{
+  color: grey;
+}
+
+.initiative-canvas{
+  margin-bottom: 17px;
+  width: 70%;
+  align-self: center;
+}
+
+.agree-circle{
+  border-radius: 30%;
+  background-color: #00cc66;
+  color: white;
+  height: 60px;
+  width: 60px;
+  font-size: 23px;
+  display: flex; 
+  justify-content: center; 
+  align-items: center;
+}
+
+.disagree-circle{
+  border-radius: 30%;
+  background-color: #ff5050;
+  color: white;
+  height: 60px;
+  width: 60px;
+  font-size: 23px;
+  display: flex; 
+  justify-content: center; 
+  align-items: center;
+}
+
+.comments-button{
+  width: 95%;
+  margin-top: 17px;
+}
