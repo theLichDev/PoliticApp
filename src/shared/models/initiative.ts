@@ -7,7 +7,10 @@ export interface Initiative {
   presentationDate: number,
   processingResult?: string,
   votingResult?: Voting,
-  publicOpinion: Opinion
+  publicOpinion: Opinion,
+  isAgreeVoted: boolean,
+  isDisagreeVoted: boolean,
+  $key: string
 }
 
 interface Voting {

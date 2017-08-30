@@ -63,15 +63,39 @@
         </div>
       </ion-col>
       <ion-col col-3>
-        <button ion-button clear icon-only large style="padding-left: 13px;">
-          <ion-icon name='thumbs-up'></ion-icon>
+        <button 
+          ion-button 
+          clear 
+          (click)="handleAgreeOpinion()"
+          icon-only 
+          large
+          style="padding-left: 13px;">
+          <ion-icon 
+            [ngClass]="{ 'no-vote': !initiative.isAgreeVoted }" 
+            name='thumbs-up'>
+          </ion-icon>
         </button>
       </ion-col>
       <ion-col col-3>
-        <button ion-button clear icon-only large style="padding-left: 13px;">
-          <ion-icon name='thumbs-down'></ion-icon>
+        <button 
+          ion-button 
+          clear 
+          (click)="handleDisagreeOpinion()"
+          icon-only 
+          large style="padding-left: 13px;">
+          <ion-icon 
+            [ngClass]="{ 'no-vote': !initiative.isDisagreeVoted }"
+            name='thumbs-down'>
+          </ion-icon>
         </button>
       </ion-col>
+    </ion-row>
+    <ion-row style="justify-content: center;">
+      <button 
+        (click)="openComments()"
+        class="comments-button" ion-button>
+          Comentarios ({{ commentsCount }})
+        </button>
     </ion-row>
   </ion-grid>
 </ion-content>

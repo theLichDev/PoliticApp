@@ -1,8 +1,11 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
+
 import { Chart } from 'chart.js';
+import { AngularFireDatabase } from 'angularfire2/database';
 
 import { Initiative } from '../../../shared/models/initiative';
+import { AppComment } from '../../../shared/models/appComment';
 
 @Component({
   selector: 'initiatives-details',
@@ -13,19 +16,25 @@ export class InitiativesDetailsPage implements OnInit{
   @ViewChild('pieCanvas') pieCanvas;
 
   public initiative: Initiative;
-
+  public commentsCount: number;
   public pieChart: any;
 
   constructor(
     public navCtrl: NavController,
-    private navParams: NavParams
+    private navParams: NavParams,
+    private database: AngularFireDatabase
   ) {  }
 
   ngOnInit() {
     this.initiative = this.navParams.data;
 
-    // recover initiative comments 
-
+    this.database.list('/comments')
+      .subscribe((data: AppComment[]) => {
+        this.commentsCount = data.filter((comment) => {
+          return comment.initiativeId === this.initiative.id;
+        }).length;
+      });
+      
     if (this.initiative.votingResult) {
       this.pieChart = new Chart(this.pieCanvas.nativeElement, {
         type: 'pie',
@@ -53,6 +62,42 @@ export class InitiativesDetailsPage implements OnInit{
         }
       });
     }
+  }
+
+  handleAgreeOpinion() {
+    if (this.initiative.isAgreeVoted) {
+      this.initiative.publicOpinion.agree = this.initiative.publicOpinion.agree - 1;
+      this.initiative.isAgreeVoted = false;
+    } else if (this.initiative.isDisagreeVoted) {
+      this.initiative.publicOpinion.disagree = this.initiative.publicOpinion.disagree - 1;
+      this.initiative.publicOpinion.agree = this.initiative.publicOpinion.agree + 1;
+      this.initiative.isDisagreeVoted = false;
+      this.initiative.isAgreeVoted = true;
+    } else {
+      this.initiative.publicOpinion.agree = this.initiative.publicOpinion.agree + 1;
+      this.initiative.isAgreeVoted = true;
+    }
+    this.database.list('/initiatives').update(this.initiative.$key, this.initiative);
+  }
+
+  handleDisagreeOpinion() {
+    if (this.initiative.isDisagreeVoted) {
+      this.initiative.publicOpinion.disagree = this.initiative.publicOpinion.disagree - 1;
+      this.initiative.isDisagreeVoted = false;
+    } else if (this.initiative.isAgreeVoted) {
+      this.initiative.publicOpinion.agree = this.initiative.publicOpinion.agree - 1;
+      this.initiative.publicOpinion.disagree = this.initiative.publicOpinion.disagree + 1;
+      this.initiative.isAgreeVoted = false;
+      this.initiative.isDisagreeVoted = true;
+    } else {
+      this.initiative.publicOpinion.disagree = this.initiative.publicOpinion.disagree + 1;
+      this.initiative.isDisagreeVoted = true;
+    }
+    this.database.list('/initiatives').update(this.initiative.$key, this.initiative);
+  }
+
+  openComments() {
+    console.log('comments opened')
   }
 
 }
