@@ -6,6 +6,7 @@ import { AngularFireDatabase } from 'angularfire2/database';
 
 import { Initiative } from '../../../shared/models/initiative';
 import { AppComment } from '../../../shared/models/appComment';
+import { InitiativesCommentsPage } from '../initiativesComments/initiativesComments';
 
 @Component({
   selector: 'initiatives-details',
@@ -97,7 +98,7 @@ export class InitiativesDetailsPage implements OnInit{
   }
 
   openComments() {
-    console.log('comments opened')
+    this.navCtrl.push(InitiativesCommentsPage, this.initiative.id);
   }
 
 }
