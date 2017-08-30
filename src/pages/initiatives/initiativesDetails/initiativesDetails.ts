@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
+import { Chart } from 'chart.js';
 
 import { Initiative } from '../../../shared/models/initiative';
 
@@ -9,7 +10,11 @@ import { Initiative } from '../../../shared/models/initiative';
 })
 export class InitiativesDetailsPage implements OnInit{
 
+  @ViewChild('pieCanvas') pieCanvas;
+
   public initiative: Initiative;
+
+  public pieChart: any;
 
   constructor(
     public navCtrl: NavController,
@@ -18,10 +23,34 @@ export class InitiativesDetailsPage implements OnInit{
 
   ngOnInit() {
     this.initiative = this.navParams.data;
-  }
 
-  openResult() {
-    console.log('Results clicked');
+    if (this.initiative.votingResult) {
+      this.pieChart = new Chart(this.pieCanvas.nativeElement, {
+        type: 'pie',
+        data: {
+          datasets: [{
+            data: [
+              this.initiative.votingResult.agree,
+              this.initiative.votingResult.disagree,
+              this.initiative.votingResult.abstentions,
+              this.initiative.votingResult.noVote
+            ],
+            backgroundColor: [
+              '#00cc66',
+              '#ff5050',
+              '#bfbfbf',
+              '#333333'
+            ]
+          }],
+          labels: [
+            'A favor',
+            'En contra',
+            'Abstenciones',
+            'No vota'
+          ]
+        }
+      });
+    }
   }
 
 }

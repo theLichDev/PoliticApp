@@ -26,25 +26,26 @@
         </ion-row>
       </ion-col>
     </ion-row>
+    <ion-row>
+      <ion-col col-12>
+        <p class="details-description">
+          {{ initiative.description }}
+        </p>
+      </ion-col>
+    </ion-row>
     <ion-row
       class="initiative-grid-row"
       *ngIf="initiative.processingResult">
       <strong>Resultado de Tramitación:</strong> {{ ' ' + initiative.processingResult }}
     </ion-row>
     <ion-row 
-      class="results-link"
+      class="initiative-grid-row"
       *ngIf="initiative.votingResult">
-      <ion-col col-12>
-          <a (click)="openResult()">
-            Resultado de la Votación
-          </a>
-        </ion-col>
+      <strong>Resultado de la Votación Parlamentaria</strong>
     </ion-row>
-    <ion-row>
+    <ion-row [hidden]="!initiative.votingResult">
       <ion-col col-12>
-        <p class="details-description">
-          {{ initiative.description }}
-        </p>
+        <canvas id="pieCanvas" #pieCanvas></canvas>
       </ion-col>
     </ion-row>
   </ion-grid>
