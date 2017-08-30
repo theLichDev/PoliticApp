@@ -43,9 +43,34 @@
       *ngIf="initiative.votingResult">
       <strong>Resultado de la Votación Parlamentaria</strong>
     </ion-row>
-    <ion-row [hidden]="!initiative.votingResult">
+    <ion-row [hidden]="!initiative.votingResult" style=" margin-bottom: 17px;">
       <ion-col col-12>
         <canvas id="pieCanvas" #pieCanvas></canvas>
+      </ion-col>
+    </ion-row>
+    <ion-row style="margin-bottom: 7px;">
+      <strong>Opinión Ciudadana</strong>
+    </ion-row>
+    <ion-row>
+      <ion-col col-3>
+        <div class="agree-circle">
+          <span>{{ initiative.publicOpinion.agree }}</span>
+        </div>
+      </ion-col>
+      <ion-col col-3>
+        <div class="disagree-circle">
+          <span>{{ initiative.publicOpinion.disagree }}</span>
+        </div>
+      </ion-col>
+      <ion-col col-3>
+        <button ion-button clear icon-only large style="padding-left: 13px;">
+          <ion-icon name='thumbs-up'></ion-icon>
+        </button>
+      </ion-col>
+      <ion-col col-3>
+        <button ion-button clear icon-only large style="padding-left: 13px;">
+          <ion-icon name='thumbs-down'></ion-icon>
+        </button>
       </ion-col>
     </ion-row>
   </ion-grid>

@@ -24,6 +24,8 @@ export class InitiativesDetailsPage implements OnInit{
   ngOnInit() {
     this.initiative = this.navParams.data;
 
+    // recover initiative comments 
+
     if (this.initiative.votingResult) {
       this.pieChart = new Chart(this.pieCanvas.nativeElement, {
         type: 'pie',
