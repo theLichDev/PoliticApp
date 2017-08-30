@@ -43,7 +43,7 @@
       *ngIf="initiative.votingResult">
       <strong>Resultado de la Votación Parlamentaria</strong>
     </ion-row>
-    <ion-row [hidden]="!initiative.votingResult" style=" margin-bottom: 17px;">
+    <ion-row [hidden]="!initiative.votingResult" class="initiative-canvas">
       <ion-col col-12>
         <canvas id="pieCanvas" #pieCanvas></canvas>
       </ion-col>
