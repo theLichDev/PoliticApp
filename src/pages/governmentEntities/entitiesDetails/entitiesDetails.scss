@@ -1,4 +1,16 @@
 .entity-description{
-  padding: 23px;
+  padding-right: 23px;
+  padding-left: 23px;
   text-align: justify;
+}
+
+.government-entity-label{
+  color: #757575;
+  margin-right: 7px;
+  margin-left: 17px;
+  margin-top: 24px;
+}
+
+.government-entity-no-data{
+  margin-top: 2px !important;
 }

@@ -5,10 +5,17 @@
 </ion-header>
 
 <ion-content>
+  <div class="government-entity-label">
+    <strong>Descripción</strong>
+  </div>
   <p class="entity-description">{{ governmentEntity.description }}</p>
+  <div class="government-entity-label">
+    <strong>Miembros</strong>
+  </div>
   <ion-list inset>
     <button 
       ion-item
+      (click)="deputyDetails(deputy)"
       *ngFor="let deputy of deputies">
         <ion-avatar item-start>
           <img src="assets/img/deputies/{{deputy.id}}.jpg">
@@ -19,7 +26,7 @@
     </button>
   </ion-list>
   <ion-label
-    class="no-data-list-label"
+    class="no-data-list-label government-entity-no-data"
     *ngIf="!deputies || deputies?.length === 0">
       No hay datos disponibles
   </ion-label>
