@@ -13,6 +13,7 @@ import { InitiativesSearchModal } from '../pages/initiatives/initiativesSearch/i
 import { InitiativesDetailsPage } from '../pages/initiatives/initiativesDetails/initiativesDetails';
 import { InitiativesCommentsPage } from '../pages/initiatives/initiativesComments/initiativesComments';
 import { DashboardEntitiesPage } from '../pages/governmentEntities/dashboardEntities/dashboardEntities';
+import { EntitiesDetailsPage } from '../pages/governmentEntities/entitiesDetails/entitiesDetails';
 
 //Ionic Native
 import { InAppBrowser } from '@ionic-native/in-app-browser';
@@ -44,7 +45,8 @@ const firebaseConfig = {
     InitiativesSearchModal,
     InitiativesDetailsPage,
     InitiativesCommentsPage,
-    DashboardEntitiesPage
+    DashboardEntitiesPage,
+    EntitiesDetailsPage
   ],
   imports: [
     BrowserModule,
@@ -62,7 +64,8 @@ const firebaseConfig = {
     InitiativesSearchModal,
     InitiativesDetailsPage,
     InitiativesCommentsPage,
-    DashboardEntitiesPage
+    DashboardEntitiesPage,
+    EntitiesDetailsPage
   ],
   providers: [
     StatusBar,
