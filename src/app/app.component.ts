@@ -6,6 +6,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { HomePage } from '../pages/home/home';
 import { DeputiesListPage } from '../pages/deputies/deputiesList/deputiesList';
 import { InitiativesListPage } from '../pages/initiatives/initiativesList/initiativesList';
+import { DashboardEntitiesPage } from '../pages/governmentEntities/dashboardEntities/dashboardEntities';
 
 @Component({
   templateUrl: 'app.html'
@@ -24,7 +25,8 @@ export class MyApp {
     this.pages = [
       { title: 'Inicio', component: HomePage },
       { title: 'Diputados', component: DeputiesListPage },
-      { title: 'Iniciativas', component:InitiativesListPage }
+      { title: 'Iniciativas', component: InitiativesListPage },
+      { title: 'Órganos de Gobierno', component: DashboardEntitiesPage }
     ];
 
   }
