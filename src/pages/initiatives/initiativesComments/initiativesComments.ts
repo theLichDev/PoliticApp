@@ -13,6 +13,7 @@ export class InitiativesCommentsPage implements OnInit{
 
   public initiativeId: number;
   public comments: AppComment[];
+  public commentText: string;
 
   constructor(
     private navParams: NavParams,
@@ -27,6 +28,20 @@ export class InitiativesCommentsPage implements OnInit{
           return comment.initiativeId === this.initiativeId;
         });
       });
+  }
+
+  sendComment() {
+    this.database.list('/comments').push({
+      initiativeId: this.initiativeId,
+      text: this.commentText,
+      date: new Date().getTime(),
+      allowDelete: true
+    });
+    this.commentText = '';
+  }
+
+  deleteComment(key: any) {
+    this.database.list('/comments').remove(key);
   }
 
 }

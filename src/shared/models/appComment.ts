@@ -1,6 +1,7 @@
 export interface AppComment {
-  id: number,
+  $key: any,
   initiativeId: number,
   text: string,
-  date: number
+  date: number,
+  allowDelete: boolean
 }
