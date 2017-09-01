@@ -1,0 +1,24 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Grupos Parlamentarios</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="dashboard-background-parliamentary">
+  <ion-grid class="parliamentary-grid">
+    <ion-row></ion-row>
+    <ion-row 
+      *ngFor="let group of parliamentariGroups"
+      style="justify-content: center;">
+        <button 
+          (click)="openParliamentaryGroup(group)"
+          class="parliamentary-button"
+          ion-button>
+            {{ group.name }}
+        </button>
+    </ion-row>
+  </ion-grid>
+</ion-content>
