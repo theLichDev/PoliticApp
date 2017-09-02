@@ -16,6 +16,7 @@ import { DashboardEntitiesPage } from '../pages/governmentEntities/dashboardEnti
 import { EntitiesDetailsPage } from '../pages/governmentEntities/entitiesDetails/entitiesDetails';
 import { DashboardParliamentariGroupsPage } from '../pages/parliamentaryGroups/parliamentaryGroupsDashboard/parliamentaryGroupsDashboard';
 import { ParliamentariGroupsDetailsPage } from '../pages/parliamentaryGroups/parliamentaryGroupsDetails/parliamentaryGroupsDetails';
+import { StatisticsPage } from '../pages/statistics/statistics';
 
 //Ionic Native
 import { InAppBrowser } from '@ionic-native/in-app-browser';
@@ -50,7 +51,8 @@ const firebaseConfig = {
     DashboardEntitiesPage,
     EntitiesDetailsPage,
     DashboardParliamentariGroupsPage,
-    ParliamentariGroupsDetailsPage
+    ParliamentariGroupsDetailsPage,
+    StatisticsPage
   ],
   imports: [
     BrowserModule,
@@ -71,7 +73,8 @@ const firebaseConfig = {
     DashboardEntitiesPage,
     EntitiesDetailsPage,
     DashboardParliamentariGroupsPage,
-    ParliamentariGroupsDetailsPage
+    ParliamentariGroupsDetailsPage,
+    StatisticsPage
   ],
   providers: [
     StatusBar,
