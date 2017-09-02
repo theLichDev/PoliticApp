@@ -7,6 +7,7 @@ import { HomePage } from '../pages/home/home';
 import { DeputiesListPage } from '../pages/deputies/deputiesList/deputiesList';
 import { InitiativesListPage } from '../pages/initiatives/initiativesList/initiativesList';
 import { DashboardEntitiesPage } from '../pages/governmentEntities/dashboardEntities/dashboardEntities';
+import { DashboardParliamentariGroupsPage } from '../pages/parliamentaryGroups/parliamentaryGroupsDashboard/parliamentaryGroupsDashboard';
 
 @Component({
   templateUrl: 'app.html'
@@ -26,7 +27,8 @@ export class MyApp {
       { title: 'Inicio', component: HomePage },
       { title: 'Diputados', component: DeputiesListPage },
       { title: 'Iniciativas', component: InitiativesListPage },
-      { title: 'Órganos de Gobierno', component: DashboardEntitiesPage }
+      { title: 'Órganos de Gobierno', component: DashboardEntitiesPage },
+      { title: 'Grupos Parlamentarios', component: DashboardParliamentariGroupsPage }
     ];
 
   }
