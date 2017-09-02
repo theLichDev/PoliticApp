@@ -1,0 +1,89 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Iniciativas</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="openAdvancedSearch()">
+        <ion-icon name="search"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-card
+    (click)="initiativeTapped(initiative)"
+    *ngFor="let initiative of filteredInitiatives">
+    <ion-item>
+      <ion-avatar item-start>
+        <img src="assets/img/parliamentaryGroup/{{initiative.parliamentaryGroup}}.jpg">
+      </ion-avatar>
+      <h2>{{ initiative.type }}</h2>
+      <p>Presentado el {{ initiative.presentationDate | date: 'dd/MM/yyyy' }}</p>
+    </ion-item>
+    <ion-card-content>
+      <p>{{ initiative.description }}</p>
+    </ion-card-content>
+    <ion-row>
+      <ion-col class="agree-indicator" col-2>
+        <ion-icon name="thumbs-up"></ion-icon>
+        <span>{{ initiative.publicOpinion.agree }}</span>
+      </ion-col>
+      <ion-col class="disagree-indicator" col-2>
+        <ion-icon name="thumbs-down"></ion-icon>
+        <span>{{ initiative.publicOpinion.disagree }}</span>
+      </ion-col>
+    </ion-row>
+  </ion-card>
+  <ion-label
+    class="no-data-list-label"
+    *ngIf="filteredInitiatives?.length === 0">
+      No hay datos disponibles
+  </ion-label>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <h6 *ngIf="filtersArray.length === 0" class="no-filters">No hay filtros</h6>
+    <ion-item 
+      *ngIf="filtersArray.length > 0"
+      class="toggle-filters">
+        <ion-label class="toggle-color">Mostrar Filtros</ion-label>
+        <ion-toggle [(ngModel)]="showFilters"></ion-toggle>
+    </ion-item>
+    <div [hidden]="!showFilters" class="chips-container">
+        <ion-chip 
+          class="custom-chip"
+          *ngFor="let filter of filtersArray"
+          [ngSwitch]="filter.name">
+            <ion-label *ngSwitchCase="'dateFrom'">
+              {{ dictionary[filter.name] }}: {{ filter.value | date: 'dd/MM/yy' }}
+            </ion-label>
+            <ion-label *ngSwitchCase="'dateTo'">
+              {{ dictionary[filter.name] }}: {{ filter.value | date: 'dd/MM/yy' }}
+            </ion-label>
+            <ion-label *ngSwitchDefault>
+              {{ dictionary[filter.name] }}: {{ filter.value }}
+            </ion-label>
+            <button 
+              ion-button
+              clear 
+              color="danger" 
+              (click)="deleteFilter(filter.name)">
+                <ion-icon name="close-circle"></ion-icon>
+            </button>
+        </ion-chip>
+    </div>
+    <button 
+      ion-button 
+      clear
+      style="align-self: right"
+      [hidden]="!showFilters"
+      *ngIf="filtersArray.length > 0"
+      (click)="deleteAllFilters()">
+        Borrar todos
+    </button>
+  </ion-toolbar>
+</ion-footer>

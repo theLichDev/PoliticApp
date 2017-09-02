@@ -1,0 +1,61 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>Comentarios</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-card *ngFor="let comment of comments">
+    <ion-grid class="comment-grid">
+      <ion-row>
+        <ion-col col-9 class="comment-col">
+          <ion-item>
+            <h3>Anónimo</h3>
+            <p>Publicado el {{ comment.date | date: 'dd/MM/yyyy H:mm' }}</p>
+          </ion-item>
+        </ion-col>
+        <ion-col col-3>
+          <ion-buttons *ngIf="comment.allowDelete" end>
+            <button 
+              (click)="deleteComment(comment.$key)"
+              ion-button 
+              clear 
+              icon-only 
+              small>
+              <ion-icon name="trash"></ion-icon>
+            </button>
+          </ion-buttons>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    <ion-card-content class="custom-card-content">
+      <p class="comment-text">{{ comment.text }}</p>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
+
+<ion-footer>
+  <ion-grid>
+    <ion-row>
+      <ion-col col-10>
+        <ion-item >
+          <ion-textarea 
+            [(ngModel)]="commentText"
+            placeholder="Escribe tu comentario">
+          </ion-textarea>
+        </ion-item>
+      </ion-col>
+      <ion-col col-2>
+        <button 
+          ion-button 
+          clear
+          [disabled]="!commentText"
+          (click)="sendComment()" 
+          icon-only 
+          large>
+          <ion-icon name="send"></ion-icon>
+        </button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-footer>

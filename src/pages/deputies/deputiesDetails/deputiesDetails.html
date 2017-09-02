@@ -5,12 +5,12 @@
 </ion-header>
 
 <ion-content>
-  <ion-grid class="deputy-grid">
+  <ion-grid class="custom-grid">
     <ion-row>
       <ion-col col-5>
         <img 
           src="assets/img/deputies/{{deputy.id}}.jpg"
-          class="deputy-details-img"
+          class="details-img"
           height="125"
           width="125">
       </ion-col>
@@ -22,7 +22,7 @@
           <strong>Grupo Parlamentario:</strong> {{ ' ' + deputy.parliamentaryGroup }}
         </ion-row>
         <ion-row class="next-to-img">
-          <strong>Fecha de Alta:</strong> {{ ' ' + deputy.registerDate | date: 'dd/MM/yy' }}
+          <strong>Fecha de Alta:</strong> {{ ' ' + deputy.registerDate | date: 'dd/MM/yyyy' }}
         </ion-row>
       </ion-col>
     </ion-row>

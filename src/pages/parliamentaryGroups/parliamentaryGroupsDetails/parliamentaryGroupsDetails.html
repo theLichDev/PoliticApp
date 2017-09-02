@@ -1,0 +1,42 @@
+<ion-header>
+    <ion-navbar color="primary">
+      <ion-title>Grupo {{ group.name }}</ion-title>
+    </ion-navbar>
+  </ion-header>
+  
+  <ion-content>
+    <ion-grid>
+      <ion-row style="justify-content: center;">
+        <img 
+          src="assets/img/parliamentaryGroup/{{group.name}}.jpg"
+          class="parliamentary-details-img"
+          height="125"
+          width="125">
+      </ion-row>
+    </ion-grid>
+    <div class="government-entity-label">
+      <strong>Descripción</strong>
+    </div>
+    <p class="entity-description">{{ group.description }}</p>
+    <div class="government-entity-label">
+      <strong>Miembros</strong>
+    </div>
+    <ion-list inset>
+      <button 
+        ion-item
+        (click)="deputyDetails(deputy)"
+        *ngFor="let deputy of deputies">
+          <ion-avatar item-start>
+            <img src="assets/img/deputies/{{deputy.id}}.jpg">
+          </ion-avatar>
+          <h2>{{ deputy.name + ' ' + deputy.lastName }}</h2>
+          <h3>Diputado por {{ deputy.district }}</h3>
+          <p>Grupo Parlamentario {{ deputy.parliamentaryGroup }}</p>
+      </button>
+    </ion-list>
+    <ion-label
+      class="no-data-list-label government-entity-no-data"
+      *ngIf="!deputies || deputies?.length === 0">
+        No hay datos disponibles
+    </ion-label>
+  </ion-content>

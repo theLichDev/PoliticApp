@@ -1,0 +1,37 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Estadísticas</ion-title>
+  </ion-navbar>
+</ion-header>
+  
+<ion-content>
+  <ion-grid>
+    <ion-row class="statistics-row">
+      <ion-col col-12>
+        <div class="statistics-label">
+          <label>Composición de la Cámara</label>
+        </div>
+        <canvas id="pieCanvas" #pieCanvas></canvas>
+      </ion-col>
+    </ion-row>
+    <ion-row class="statistics-row-bar-chart">
+      <ion-col col-12>
+        <div class="statistics-label">
+          <label>Valoración Líderes Políticos</label>
+        </div>
+        <canvas id="barCanvas" #barCanvas></canvas>
+      </ion-col>
+    </ion-row>
+    <ion-row class="statistics-row-line-chart">
+      <ion-col col-12>
+        <div class="statistics-label">
+          <label>Intención de Voto</label>
+        </div>
+        <canvas id="lineCanvas" #lineCanvas></canvas>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

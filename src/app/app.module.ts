@@ -8,6 +8,15 @@ import { HomePage } from '../pages/home/home';
 import { DeputiesListPage } from '../pages/deputies/deputiesList/deputiesList';
 import { DeputiesSearchModal } from '../pages/deputies/deputiesSearch/deputiesSearch';
 import { DeputiesDetailsPage } from '../pages/deputies/deputiesDetails/deputiesDetails';
+import { InitiativesListPage } from '../pages/initiatives/initiativesList/initiativesList';
+import { InitiativesSearchModal } from '../pages/initiatives/initiativesSearch/initiativesSearch';
+import { InitiativesDetailsPage } from '../pages/initiatives/initiativesDetails/initiativesDetails';
+import { InitiativesCommentsPage } from '../pages/initiatives/initiativesComments/initiativesComments';
+import { DashboardEntitiesPage } from '../pages/governmentEntities/dashboardEntities/dashboardEntities';
+import { EntitiesDetailsPage } from '../pages/governmentEntities/entitiesDetails/entitiesDetails';
+import { DashboardParliamentariGroupsPage } from '../pages/parliamentaryGroups/parliamentaryGroupsDashboard/parliamentaryGroupsDashboard';
+import { ParliamentariGroupsDetailsPage } from '../pages/parliamentaryGroups/parliamentaryGroupsDetails/parliamentaryGroupsDetails';
+import { StatisticsPage } from '../pages/statistics/statistics';
 
 //Ionic Native
 import { InAppBrowser } from '@ionic-native/in-app-browser';
@@ -34,7 +43,16 @@ const firebaseConfig = {
     HomePage,
     DeputiesListPage,
     DeputiesSearchModal,
-    DeputiesDetailsPage
+    DeputiesDetailsPage,
+    InitiativesListPage,
+    InitiativesSearchModal,
+    InitiativesDetailsPage,
+    InitiativesCommentsPage,
+    DashboardEntitiesPage,
+    EntitiesDetailsPage,
+    DashboardParliamentariGroupsPage,
+    ParliamentariGroupsDetailsPage,
+    StatisticsPage
   ],
   imports: [
     BrowserModule,
@@ -47,7 +65,16 @@ const firebaseConfig = {
     HomePage,
     DeputiesListPage,
     DeputiesSearchModal,
-    DeputiesDetailsPage
+    DeputiesDetailsPage,
+    InitiativesListPage,
+    InitiativesSearchModal,
+    InitiativesDetailsPage,
+    InitiativesCommentsPage,
+    DashboardEntitiesPage,
+    EntitiesDetailsPage,
+    DashboardParliamentariGroupsPage,
+    ParliamentariGroupsDetailsPage,
+    StatisticsPage
   ],
   providers: [
     StatusBar,

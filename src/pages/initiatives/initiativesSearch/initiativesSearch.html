@@ -1,0 +1,135 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>Búsqueda Avanzada</ion-title>
+  </ion-navbar>    
+</ion-header>
+
+<ion-content>
+  <ion-item class="input-padding">
+    <ion-input 
+      type="text"
+      [(ngModel)]="search.freeText"
+      placeholder="Buscar en Iniciativas">
+    </ion-input>
+  </ion-item>
+    
+  <ion-item class="input-padding">
+    <ion-label>Grupo Parlamentario</ion-label>
+    <ion-select 
+      cancelText="Ninguno"
+      okText="Aceptar"
+      interface="popover"
+      [(ngModel)]="search.parliamentaryGroup"
+      (ionCancel)="handleSelectCancel('parliamentaryGroup')">
+      <ion-option 
+        *ngFor="let group of parliamentaryGroups"
+        value="{{group}}">
+          {{ group }}
+      </ion-option>
+    </ion-select>
+  </ion-item>
+
+  <ion-item class="input-padding">
+    <ion-label>Tipo</ion-label>
+    <ion-select 
+      cancelText="Ninguno"
+      okText="Aceptar"
+      interface="popover"
+      [(ngModel)]="search.type"
+      (ionCancel)="handleSelectCancel('type')">
+      <ion-option value="Proyecto de ley">
+        Proyecto de ley
+      </ion-option>
+      <ion-option value="Proposicion de ley">
+        Proposicion de ley
+      </ion-option>
+    </ion-select>
+  </ion-item>
+
+  <ion-item class="input-padding">
+    <ion-label>Estado</ion-label>
+    <ion-select 
+      cancelText="Ninguno"
+      okText="Aceptar"
+      interface="popover"
+      [(ngModel)]="search.state"
+      (ionCancel)="handleSelectCancel('state')">
+      <ion-option value="En tramitacion">
+        En tramitacion
+      </ion-option>
+      <ion-option value="Tramitado">
+        Tramitado
+      </ion-option>
+    </ion-select>
+  </ion-item>
+
+  <ion-item
+    *ngIf="search.state === 'Tramitado'"
+    class="input-padding">
+    <ion-label>Resultado de tramitacion</ion-label>
+    <ion-select 
+      cancelText="Ninguno"
+      okText="Aceptar"
+      interface="popover"
+      [(ngModel)]="search.processingResult"
+      (ionCancel)="handleSelectCancel('processingResult')">
+      <ion-option value="Aprobado">
+        Aprobado
+      </ion-option>
+      <ion-option value="Rechazado">
+        Rechazado
+      </ion-option>
+    </ion-select>
+  </ion-item>
+    
+  <ion-list inset>
+    <ion-list-header>
+      Fecha de Presentación
+    </ion-list-header>
+    <ion-item>
+      <ion-label>Desde</ion-label>
+      <ion-datetime 
+        displayFormat="DD/MM/YYYY" 
+        [(ngModel)]="search.dateFrom"
+        monthNames="Enero, Febrero, Marzo, Abril, Mayo, Junio, Julio, Agosto, Septiembre, Octubre, Noviembre, Diciembre"
+        pickerFormat="D MMMM YYYY"
+        cancelText="Cancelar"
+        doneText="Hecho">
+      </ion-datetime>
+    </ion-item>
+    <ion-item>
+      <ion-label>Hasta</ion-label>
+      <ion-datetime 
+        displayFormat="DD/MM/YYYY" 
+        [(ngModel)]="search.dateTo"
+        monthNames="Enero, Febrero, Marzo, Abril, Mayo, Junio, Julio, Agosto, Septiembre, Octubre, Noviembre, Diciembre"
+        pickerFormat="D MMMM YYYY"
+        cancelText="Cancelar"
+        doneText="Hecho">
+      </ion-datetime>
+    </ion-item>
+  </ion-list>  
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-buttons>
+      <button 
+        ion-button 
+        clear 
+        class="footer-button" 
+        color="primary" 
+        (click)="closeSearch()">
+          Cancelar
+      </button>
+      <button 
+        ion-button 
+        clear 
+        class="footer-button" 
+        color="primary"
+        (click)="initSearch()">
+          Buscar
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-footer>

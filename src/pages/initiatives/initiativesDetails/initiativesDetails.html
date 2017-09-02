@@ -1,0 +1,101 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>Detalles</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid class="custom-grid">
+    <ion-row>
+      <ion-col col-5>
+        <img 
+          src="assets/img/parliamentaryGroup/{{initiative.parliamentaryGroup}}.jpg"
+          class="details-img"
+          height="125"
+          width="125">
+      </ion-col>
+      <ion-col col-7>
+        <ion-row class="next-to-img">
+          <strong>Tipo:</strong> {{ ' ' + initiative.type }}
+        </ion-row>
+        <ion-row class="next-to-img">
+          <strong>Presentado el:</strong> {{ ' ' + initiative.presentationDate | date: 'dd/MM/yyyy' }}
+        </ion-row>
+        <ion-row class="next-to-img">
+          <strong>Estado:</strong> {{ ' ' + initiative.state }}
+        </ion-row>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col col-12>
+        <p class="details-description">
+          {{ initiative.description }}
+        </p>
+      </ion-col>
+    </ion-row>
+    <ion-row
+      class="initiative-grid-row"
+      *ngIf="initiative.processingResult">
+      <strong>Resultado de Tramitación:</strong> {{ ' ' + initiative.processingResult }}
+    </ion-row>
+    <ion-row 
+      class="initiative-grid-row"
+      *ngIf="initiative.votingResult">
+      <strong>Resultado de la Votación Parlamentaria</strong>
+    </ion-row>
+    <ion-row [hidden]="!initiative.votingResult" class="initiative-canvas">
+      <ion-col col-12>
+        <canvas id="pieCanvas" #pieCanvas></canvas>
+      </ion-col>
+    </ion-row>
+    <ion-row style="margin-bottom: 7px;">
+      <strong>Opinión Ciudadana</strong>
+    </ion-row>
+    <ion-row>
+      <ion-col col-3>
+        <div class="agree-circle">
+          <span>{{ initiative.publicOpinion.agree }}</span>
+        </div>
+      </ion-col>
+      <ion-col col-3>
+        <div class="disagree-circle">
+          <span>{{ initiative.publicOpinion.disagree }}</span>
+        </div>
+      </ion-col>
+      <ion-col col-3>
+        <button 
+          ion-button 
+          clear 
+          (click)="handleAgreeOpinion()"
+          icon-only 
+          large
+          style="padding-left: 13px;">
+          <ion-icon 
+            [ngClass]="{ 'no-vote': !initiative.isAgreeVoted }" 
+            name='thumbs-up'>
+          </ion-icon>
+        </button>
+      </ion-col>
+      <ion-col col-3>
+        <button 
+          ion-button 
+          clear 
+          (click)="handleDisagreeOpinion()"
+          icon-only 
+          large style="padding-left: 13px;">
+          <ion-icon 
+            [ngClass]="{ 'no-vote': !initiative.isDisagreeVoted }"
+            name='thumbs-down'>
+          </ion-icon>
+        </button>
+      </ion-col>
+    </ion-row>
+    <ion-row style="justify-content: center;">
+      <button 
+        (click)="openComments()"
+        class="full-button" ion-button>
+          Comentarios ({{ commentsCount }})
+        </button>
+    </ion-row>
+  </ion-grid>
+</ion-content>
