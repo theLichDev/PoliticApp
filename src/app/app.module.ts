@@ -14,7 +14,8 @@ import { InitiativesDetailsPage } from '../pages/initiatives/initiativesDetails/
 import { InitiativesCommentsPage } from '../pages/initiatives/initiativesComments/initiativesComments';
 import { DashboardEntitiesPage } from '../pages/governmentEntities/dashboardEntities/dashboardEntities';
 import { EntitiesDetailsPage } from '../pages/governmentEntities/entitiesDetails/entitiesDetails';
-import { DashboardParliamentariGroupsPage } from '../pages/parliamentaryGroups/parliamentaryGroupsDashboard/parliamentaryGroupsDashboard'; 
+import { DashboardParliamentariGroupsPage } from '../pages/parliamentaryGroups/parliamentaryGroupsDashboard/parliamentaryGroupsDashboard';
+import { ParliamentariGroupsDetailsPage } from '../pages/parliamentaryGroups/parliamentaryGroupsDetails/parliamentaryGroupsDetails';
 
 //Ionic Native
 import { InAppBrowser } from '@ionic-native/in-app-browser';
@@ -48,7 +49,8 @@ const firebaseConfig = {
     InitiativesCommentsPage,
     DashboardEntitiesPage,
     EntitiesDetailsPage,
-    DashboardParliamentariGroupsPage
+    DashboardParliamentariGroupsPage,
+    ParliamentariGroupsDetailsPage
   ],
   imports: [
     BrowserModule,
@@ -68,7 +70,8 @@ const firebaseConfig = {
     InitiativesCommentsPage,
     DashboardEntitiesPage,
     EntitiesDetailsPage,
-    DashboardParliamentariGroupsPage
+    DashboardParliamentariGroupsPage,
+    ParliamentariGroupsDetailsPage
   ],
   providers: [
     StatusBar,

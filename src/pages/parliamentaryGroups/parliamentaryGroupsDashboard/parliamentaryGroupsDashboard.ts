@@ -3,7 +3,7 @@ import { NavController, LoadingController } from 'ionic-angular';
 
 import { AngularFireDatabase } from 'angularfire2/database';
 
-//import { EntitiesDetailsPage } from '../entitiesDetails/entitiesDetails';
+import { ParliamentariGroupsDetailsPage } from '../parliamentaryGroupsDetails/parliamentaryGroupsDetails';
 
 @Component({
   selector: 'dashboard-parliamentary-groups',
@@ -31,9 +31,11 @@ export class DashboardParliamentariGroupsPage implements OnInit{
       });
   }
 
-  openParliamentaryGroup(parliamentariGroup: any) {
-    //this.navCtrl.push(, parliamentariGroups);
-    console.log('click');
+  openParliamentaryGroup(name: string) {
+    let item = this.parliamentariGroups.filter((group) => {
+      return group.name === name;
+    });
+    this.navCtrl.push(ParliamentariGroupsDetailsPage, item[0]);
   }
 
 }

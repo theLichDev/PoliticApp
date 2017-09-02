@@ -8,17 +8,85 @@
 </ion-header>
 
 <ion-content class="dashboard-background-parliamentary">
-  <ion-grid class="parliamentary-grid">
-    <ion-row></ion-row>
-    <ion-row 
-      *ngFor="let group of parliamentariGroups"
-      style="justify-content: center;">
+  <ion-grid>
+    <ion-row style="justify-content: center;">
+      <ion-col>
         <button 
-          (click)="openParliamentaryGroup(group)"
+          (click)="openParliamentaryGroup('Socialista')"
           class="parliamentary-button"
+          style="background-color: red"
           ion-button>
-            {{ group.name }}
+            Socialista
         </button>
+      </ion-col>
+      <ion-col>
+        <button 
+          (click)="openParliamentaryGroup('Popular')"
+          class="parliamentary-button"
+          style="background-color: #02A1E2"
+          color="blue"
+          ion-button>
+            Popular
+        </button>
+      </ion-col>
+    </ion-row>
+    <ion-row style="justify-content: center;">
+      <ion-col>
+        <button 
+          (click)="openParliamentaryGroup('Unidos Podemos')"
+          class="parliamentary-button"
+          style="background-color: #5C2F5D"
+          ion-button>
+            Unidos Podemos
+        </button>
+      </ion-col>
+      <ion-col>
+        <button 
+          (click)="openParliamentaryGroup('Ciudadanos')"
+          class="parliamentary-button"
+          style="background-color: #EC6B27"
+          color="blue"
+          ion-button>
+            Ciudadanos
+        </button>
+      </ion-col>
+    </ion-row>
+    <ion-row style="justify-content: center;">
+      <ion-col>
+        <button 
+          (click)="openParliamentaryGroup('Esquerra Republicana')"
+          class="parliamentary-button"
+          style="background-color: #FCB131"
+          ion-button>
+            Esquerra Repb.
+        </button>
+      </ion-col>
+      <ion-col>
+        <button 
+          (click)="openParliamentaryGroup('Vasco')"
+          class="parliamentary-button"
+          style="background-color: #079048"
+          color="blue"
+          ion-button>
+            Vasco
+        </button>
+      </ion-col>
+    </ion-row>
+    <ion-row style="justify-content: center;">
+      <button 
+        (click)="openParliamentaryGroup('Mixto')"
+        class="parliamentary-button"
+        style="background-color: grey; width: 65%;"
+        ion-button>
+          Mixto
+      </button>
+    </ion-row>
+    <ion-row style="justify-content: center;">
+      <img
+        src="assets/img/congressDiagram.jpg"
+        class="congress-img"
+        height="125"
+        width="125">
     </ion-row>
   </ion-grid>
 </ion-content>
